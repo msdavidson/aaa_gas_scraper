@@ -1,0 +1,42 @@
+---
+title: "AAA Nevada Gas Prices"
+date: "Data Scrape Date: `r format(Sys.time(), '%B %d, %Y at %I %p')`"
+output: word_document
+---
+
+```{r}
+#| echo=FALSE,
+#| include=FALSE
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(lubridate)
+
+#Get yesterday's date
+yesterday <- format(Sys.time(), "%Y_%m_%d_h%H")
+
+#Read in the Media only requests
+master_data_render <- gas_df  
+
+```
+
+
+```{r}
+#| echo=FALSE,
+#| results='asis'
+
+for (i in 1:nrow(master_data_render)) {
+  
+  cat("## ", master_data_render$id[i], "\n")
+  
+  cat("* __Regular:__", master_data_render$Regular[i], "\n")
+  
+  cat("* __Mid:__", master_data_render$Mid[i], "\n")
+  
+  cat("* __Premium:__", master_data_render$Premium[i], "\n")
+  
+  cat("* __Diesel:__", master_data_render$Diesel[i], "\n")
+
+  cat("\n\n\n")
+}
+```
