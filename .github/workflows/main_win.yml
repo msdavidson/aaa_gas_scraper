@@ -21,12 +21,7 @@ jobs:
         
       - name: Install Packages
         run: |
-          R 'install.packages("tidyverse", type = "win.binary")' 
-          R 'install.packages("rvest", type = "win.binary")' 
-          R 'install.packages("janitor", type = "win.binary")' 
-          R 'install.packages("mailR", type = "win.binary")'
-          R 'install.packages("rmarkdown", type = "win.binary")' 
-          R 'install.packages("pandocs", type = "win.binary")' 
+          install.packages(c("tidyverse", "rvest", "janitor", "mailR", "rmarkdown" , "pandocs"), type = "win.binary")
         shell: Rscript {0}
           
       - name: Run Scraper
