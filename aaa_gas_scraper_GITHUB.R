@@ -30,27 +30,3 @@ sys <- format(Sys.time(), "%Y_%m_%d")
 sys_path <- paste0("data/NV_", sys, ".csv", collapse = NULL)
 
 write.csv(gas_df, file=sys_path,row.names=FALSE)
-
-##
-#Render Word report
-docx_report_path <- paste0("data/aaa_", 
-                           sys,
-                           '.docx', sep='')
-
-rmarkdown::render("aaa_gas_report.Rmd",
-                  output_file = docx_report_path)
-
-#Email the output CSVs (Master, and Media Only)
-send.mail(from = "lvrjautodata@gmail.com",
-          to = c("michaeldmedia@gmail.com"),
-          subject = paste0("AAA Scraper NV - Export: ", sys),
-          body = "Test GitHub Scraper for AAA Gas Prices",
-          smtp = list(host.name = "smtp.gmail.com", port = 465, 
-                      user.name = "lvrjautodata", 
-                      #Generated app password thru Gmail security settings
-                      passwd = "llxgybjlubznaofm", 
-                      ssl = TRUE),
-          authenticate = TRUE,
-          send = TRUE,
-          attach.files = c(sys_path, docx_report_path),
-          file.names = c("aaa_gas.csv", "aaa_gas.docx"))
