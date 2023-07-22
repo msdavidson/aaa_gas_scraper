@@ -7,7 +7,7 @@ on:
 
 jobs: 
   autoscrape:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       
@@ -19,7 +19,7 @@ jobs:
         
       - name: Install Packages
         run: |
-          install.packages(c("tidyverse", "rvest", "janitor", "mailR", "rmarkdown" , "pandocs"), type = "win.binary")
+          install.packages(c("tidyverse", "rvest", "janitor", "mailR", "rmarkdown" , "pandocs"))
         shell: Rscript {0}
           
       - name: Run Scraper
