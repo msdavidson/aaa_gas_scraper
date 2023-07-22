@@ -1,8 +1,6 @@
 library(tidyverse)
 library(rvest)
 library(lubridate)
-library(mailR)
-library(rmarkdown)
 
 aaa_nv <- read_html("https://gasprices.aaa.com/?state=NV")
 
