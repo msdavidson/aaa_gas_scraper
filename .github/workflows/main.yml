@@ -5,8 +5,8 @@ on:
     - cron:  '47 18 * * *' #UTC Time, represents 12:47 pm Pacific
   workflow_dispatch:
 
-  jobs:
-  import-data:
+jobs:
+  auto-scrape:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -23,7 +23,7 @@ on:
             any::rvest
             any::janitor 
 
-      - name: Import data
+      - name: Run R Script
         run: Rscript -e 'source("aaa_gas_scraper_GITHUB.R")'
        
       - name: Add and commit	
