@@ -1,4 +1,6 @@
-library(tidyverse)
+library(dplyr)
+library(tidyr)
+library(stringr)
 library(rvest)
 library(lubridate)
 
