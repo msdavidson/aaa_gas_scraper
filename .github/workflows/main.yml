@@ -7,7 +7,7 @@ on:
 
 jobs: 
   autoscrape:
-    runs-on: ubuntu-latest
+    runs-on: [windows-latest]
     steps:
       - uses: actions/checkout@v2
       
@@ -19,7 +19,7 @@ jobs:
         
       - name: Install Packages
         run: |
-          install.packages(c("tidyverse", "rvest", "janitor", "mailR", "rmarkdown" , "pandocs"))
+          install.packages(c("tidyverse", "rvest", "janitor", "mailR", "rmarkdown" , "pandocs"), type = "win.binary")
         shell: Rscript {0}
           
       - name: Run Scraper
@@ -33,4 +33,3 @@ jobs:
           git commit -m "Latest data" 	
       - name: Push	
         run: git push
-      
